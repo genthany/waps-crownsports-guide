@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞彩网 · 专题介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f2f5;
+            font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+            color: #1e2a3a;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .page-wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* hero 横幅 */
+        .hero {
+            background: linear-gradient(145deg, #ffffff 0%, #f7f9fc 100%);
+            border-radius: 32px;
+            padding: 3.5rem 2.8rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #e6edf4;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(200, 212, 230, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #132433;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #4b5e73;
+            border-left: 4px solid #2b7a62;
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+            max-width: 620px;
+        }
+
+        /* 卡片体系 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .card-section {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.2rem 2.5rem;
+            border: 1px solid #e4eaf0;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), 0 1px 4px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.2s;
+        }
+
+        .card-section:hover {
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.04);
+        }
+
+        .card-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #1f3244;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card-title span {
+            background: #dce6ef;
+            width: 6px;
+            height: 24px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .intro-text {
+            font-size: 1rem;
+            color: #2b3f54;
+            margin-bottom: 1.2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 2rem;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 1.6rem;
+            font-size: 0.98rem;
+            color: #29425c;
+            flex: 0 0 calc(50% - 1rem);
+            line-height: 1.6;
+        }
+
+        .feature-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2b7a62;
+            font-weight: bold;
+        }
+
+        .faq-item {
+            border-bottom: 1px dashed #dce3ec;
+            padding: 1rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #1b2e40;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-a {
+            color: #44607a;
+            font-size: 0.95rem;
+            padding-left: 0.25rem;
+        }
+
+        /* 场景小标签 */
+        .scene-tag {
+            background: #eef3f9;
+            border-radius: 40px;
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.9rem;
+            color: #1d3b52;
+            border: 1px solid #d5e0ec;
+            margin-right: 0.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 页尾/提示 */
+        .footer-note {
+            margin-top: 2.8rem;
+            text-align: center;
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2rem 1.5rem;
+            border: 1px solid #e2e9f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .footer-note p {
+            font-size: 1rem;
+            color: #2b425b;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-note .link-sentence {
+            background: #f4f8fc;
+            display: inline-block;
+            padding: 0.6rem 1.8rem;
+            border-radius: 60px;
+            border: 1px solid #d3dfeb;
+            font-size: 1rem;
+        }
+
+        .footer-note a {
+            color: #1d593f;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #4f8972;
+            transition: border-bottom 0.15s;
+        }
+
+        .footer-note a:hover {
+            border-bottom: 2px solid #1d593f;
+        }
+
+        .small-meta {
+            color: #728ba2;
+            font-size: 0.9rem;
+            margin-top: 1.2rem;
+            border-top: 1px solid #e2e9f0;
+            padding-top: 1rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .hero {
+                padding: 2.2rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .card-section {
+                padding: 1.6rem 1.2rem;
+            }
+
+            .card-title {
+                font-size: 1.3rem;
+            }
+
+            .feature-list li {
+                flex: 0 0 100%;
+            }
+
+            .footer-note {
+                padding: 1.5rem 1rem;
+            }
+
+            .footer-note .link-sentence {
+                padding: 0.4rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .hero .sub {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- hero 横幅 -->
+    <section class="hero">
+        <h1>竞彩 · 赛事与策略的对话</h1>
+        <div class="sub">
+            从赔率结构到赛前情报，理解竞彩背后的分析逻辑，而非仅仅关注结果。
+        </div>
+    </section>
+
+    <!-- 卡片区：三段自然介绍 + 特点/场景/FAQ 摘要 -->
+    <div class="card-grid">
+
+        <!-- 第一段 · 背景说明 + 平台定位 -->
+        <section class="card-section">
+            <div class="card-title"><span></span> 竞彩生态与信息集成</div>
+            <div class="intro-text">
+                现代竞彩早已超越单纯的竞猜行为，它更像是结合数据、球队动态与实时资讯的复合领域。
+                <a href="https://portal-m-sporttery.com" style="color:#1d593f; text-decoration: underline; text-underline-offset: 3px; font-weight: 500;">竞彩网</a> 
+                正是围绕这一需求搭建的信息聚合平台——提供联赛赛程、历史交锋、近期状态以及赔率变化趋势，帮助用户在赛前建立更全面的观察维度。
+            </div>
+            <div style="margin-top:0.8rem; display: flex; flex-wrap: wrap; gap: 0.3rem;">
+                <span class="scene-tag">⚽ 五大联赛</span>
+                <span class="scene-tag">🏀 篮球竞彩</span>
+                <span class="scene-tag">📊 赔率对比</span>
+                <span class="scene-tag">🧾 赛前简报</span>
+            </div>
+        </section>
+
+        <!-- 第二段 · 从主题内容展开：数据、情报与策略 -->
+        <section class="card-section">
+            <div class="card-title"><span></span> 从数据到判断的链路</div>
+            <p class="intro-text" style="margin-bottom:0.6rem;">
+                许多参与者在分析比赛时容易陷入固定思维，而竞彩的价值恰恰在于信息的层次性。通过查看主客差异、战术克制关系以及伤病名单，可以更理性地评估概率区间。平台在页面中整合了近期状态雷达、进球时段分布以及裁判数据等维度，这些细颗粒度信息能够辅助形成更完整的赛前画像。
+            </p>
+            <ul class="feature-list">
+                <li>历史同赔与概率统计</li>
+                <li>球队近6场进失球分解</li>
+                <li>联赛积分权重与战意判断</li>
+                <li>实时阵容与伤停预警</li>
+            </ul>
+            <div style="margin-top: 1rem; font-size:0.95rem; color:#416077; background: #f2f7fd; padding: 0.8rem 1rem; border-radius: 16px;">
+                💡 策略提醒：关注临场数据波动往往比初赔更有参考意义，尤其是在重大比赛日前后的信息窗口。
+            </div>
+        </section>
+
+        <!-- 第三段 · 常见疑问摘要 + 使用场景 -->
+        <section class="card-section">
+            <div class="card-title"><span></span> 竞彩常见疑问摘要</div>
+            <div class="faq-item">
+                <div class="faq-q">❓ 如何理解让球与赔率变化？</div>
+                <div class="faq-a">让球数值反映了机构对双方实力差距的评估，而赔率变化则隐含市场资金流向。建议结合双方近期相同让球场景下的表现来综合判断。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">❓ 赛前多久的数据最有价值？</div>
+                <div class="faq-a">赛前 6 小时至 1 小时是情报更新最密集的时段，包括首发确认、天气变化以及突发伤病，此时段的数据变动值得关注。</div>
+            </div>
+            <div class="faq-item" style="border-bottom:0;">
+                <div class="faq-q">❓ 平台信息是否覆盖二级联赛？</div>
+                <div class="faq-a">除主流赛事外，平台也收录英冠、德乙、J联赛、K联赛等二级及亚洲联赛的赛前数据，覆盖面较广。</div>
+            </div>
+            <div style="margin-top: 1.5rem; background: #f1f5fa; border-radius: 20px; padding: 0.6rem 1.2rem; display: inline-block; font-size: 0.9rem; color: #2e5370;">
+                📎 更多专题内容可前往 <a href="https://portal-m-sporttery.com" style="color:#1b5c46; font-weight:500;">竞彩网</a> 查阅
+            </div>
+        </section>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <footer class="footer-note">
+        <p>本页作为竞彩信息专题的入门说明，希望帮助新读者快速建立分析框架，并熟悉平台提供的数据维度。</p>
+        <div class="link-sentence">
+            若希望进一步了解赛事数据与实时情报，可直接访问 <a href="https://portal-m-sporttery.com">竞彩网</a> 浏览完整赛程与深度统计。
+        </div>
+        <div class="small-meta">
+            内容仅为信息整理，不构成任何投注建议 · 理性竞猜，享受比赛
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>
